@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NexusTech - Registrarse</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <style type="text/css">
+        #miCheck{
+            margin: 0px 102px 0px 102px;
+        }
+    </style>
+</head>
+<body>
+    
+    <form id="miFormulario">
+        <div class="container-md text-center">
+            <div class="alerta"></div>
+          <div class="mb-3">
+            <label for="nombreCompleto" class="form-label">Nombre Completo</label>
+            <input type="text" class="form-control" id="nombreCompleto" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="dni" class="form-label">DNI</label>
+            <input type="number" class="form-control" id="dni" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="codigoPostal" class="form-label">Codigo Postal</label>
+            <input type="number" class="form-control" id="codigoPostal" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="correo" class="form-label">Correo</label>
+            <input type="email" class="form-control" id="correo" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="contraseña" class="form-label ">Password</label>
+            <input type="password" class="form-control" id="contraseña">
+          </div>
+        </div>
+          <div class="mb-3 form-check" id="miCheck">
+            <input type="checkbox" class="form-check-input" id="terminosYCondiciones" required>
+            <label class="form-check-label" for="terminosYCondiciones">Acepto los <a href="#">terminos y condiciones</a>.</label>
+          </div>
+          <div class="text-center">
+            <button type="button" class="btn btn-success" id="botonEnviar">Registrarse</button>  
+          </div>
+    </form> 
+    
+    <script type="text/javascript">
+        let boton = document.querySelector("#botonEnviar");
+        boton.addEventListener("click", validarFormulario);
+        function validarFormulario() {
+            let campos = document.querySelectorAll(".form-control");
+            let alerta = document.querySelector(".alerta");
+            let formularioValido = true;
+
+            campos.forEach(e => {
+                if (e.value.trim() === "") {
+                    formularioValido = false;
+                    return;
+                }
+            });
+
+            if (!formularioValido) {
+                alerta.innerHTML = `<div class="alert alert-danger text-center" role="alert">Rellene todos los campos</div>`;
+            } else {
+                alerta.innerHTML = ""; // Limpiar cualquier alerta previa
+                document.querySelector("miFormulario").submit(); // Enviar el formulario
+            }
+        }
+    </script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
